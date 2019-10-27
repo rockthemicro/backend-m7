@@ -30,7 +30,6 @@ public class ServerLogic {
 
     @GetMapping("/salut")
     public String greeting(@RequestParam(value = "altparam", defaultValue = "ce sugi ma?") String costasu) {
-        System.out.println("mergeeeeeeeee");
         return costasu;
     }
 
@@ -38,8 +37,6 @@ public class ServerLogic {
     public String sendData(@RequestParam(value = "temp") double temp,
                            @RequestParam(value = "earthHum") double earthHum,
                            @RequestParam(value = "light") double light) {
-
-        System.out.println("mergeeee");
 
         SensorsData sd = new SensorsData();
         sd.setTemp(temp);
@@ -57,14 +54,15 @@ public class ServerLogic {
     @GetMapping("/login")
     public String login(@RequestParam(value = "userName") String userName,
                         @RequestParam(value = "password") String password) {
+
         Optional<User> user = ur.findById(userName);
         if (user.isPresent()) {
 
-            if (user.get().getPassword().equals(password))
+            if (user.get().getPassword().equals(password)) {
                 return "OK";
-            else
+            } else {
                 return "FAIL";
-
+            }
         } else {
             return "FAIL";
         }
