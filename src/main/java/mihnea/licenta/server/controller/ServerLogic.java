@@ -93,7 +93,7 @@ public class ServerLogic {
     }
 
     @GetMapping("/getDataSince")
-    public SensorsData[] getDataSince(@RequestParam(value = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+    public SensorsData[] getDataSince(@RequestParam(value = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDate date) {
         List<SensorsData> dataList = sdr.findAllByDateAfter(date);
         SensorsData[] result = new SensorsData[dataList.size()];
 
